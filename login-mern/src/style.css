@@ -1,0 +1,112 @@
+.btn-primary {
+  background-color: #007bff; /* Same blue color as in the Japanese Hiragana page */
+  color: #fff; /* Text color */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.hiragana-display {
+  font-size: 150px;
+  color: white;
+  padding: 1px;
+  margin: 1px 0;
+}
+
+.katakana-display {
+  font-size: 150px;
+  color: white;
+  padding: 1px;
+  margin: 1px 0;
+}
+
+.text-9xl {
+  font-size: 6rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
+.mt-16 {
+  margin-top: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.header-padding {
+  padding: 1px;
+}
+
+.w-64 {
+  width: 25%;
+}
+
+.custom-min-vh-100 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* New Styles for the User Button */
+.dropdown .dropdown-menu {
+  background-color: #343a40;
+  color: white;
+}
+
+.dropdown .dropdown-item {
+  color: white;
+}
+
+.dropdown .dropdown-item:hover {
+  background-color: #23272b;
+}
+
+.btn-dark {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: white;
+}
+
+.btn-dark:hover {
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+
+/* Container for buttons to wrap on smaller screens */
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+  justify-content: center; /* Center the buttons */
+  gap: 4px; /* Spacing between buttons */
+}
+
+/* Common button styles and spacing */
+.btn-custom {
+  flex: 1 0 150px; /* Allow buttons to grow and shrink */
+  max-width: 180px; /* Ensure max width */
+  padding: 10px 20px; /* Adjust padding for consistent button size */
+}
+
