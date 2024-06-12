@@ -18,6 +18,8 @@ import KatakanaVowels from "./KatakanaVowels";
 import KatakanaHandakuten from "./KatakanaHandakuten";
 import KatakanaDakuten from "./KatakanaDakuten";
 import YourAccount from "./YourAccount";
+import Schedule from "./Schedule";
+import CustomSchedule from "./CustomSchedule";
 
 
 function App() {
@@ -38,6 +40,9 @@ function App() {
         <Route path="/KatakanaHandakuten" element={<KatakanaHandakuten />}></Route>
         <Route path="/KatakanaDakuten" element={<KatakanaDakuten />}></Route>
         <Route path="/YourAccount" element={<YourAccount />}></Route>
+        <Route path="/Pre-made-schedule" element={<Schedule />}></Route>
+        <Route path="/Custom-schedule" element={<CustomSchedule />}></Route>
+
 
       </Routes>
     </BrowserRouter>

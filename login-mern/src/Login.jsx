@@ -12,6 +12,14 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email) {
+      setErrorMessage("You have to type your e-mail");
+      return;
+    }
+    if(!password) {
+      setErrorMessage("You have to type your password");
+      return;
+    }
     axios
       .post("http://localhost:3001/login", { email, password })
       .then((result) => {
@@ -35,7 +43,7 @@ function Login() {
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-25">
-        <h2>Login</h2>
+        <h2 className="login">Login</h2>
         {errorMessage && <div className="alert alert-danger">{errorMessage}</div>} {/* Display error message */}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -68,7 +76,6 @@ function Login() {
           </button>
         </form>
         <div className="d-flex mt-3 justify-content-center text-align-center">
-          <p>Create an Account</p>
         </div>
         <Link
           to="/register"

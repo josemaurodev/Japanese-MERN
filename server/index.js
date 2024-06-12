@@ -62,3 +62,16 @@ app.put("/user", (req, res) => {
     })
     .catch(err => res.json({ status: "error", message: "An error occurred" }));
 });
+
+app.delete("/user", (req, res) => {
+  const { userID } = req.query;
+  UserModel.findByIdAndDelete(userID)
+    .then(user => {
+      if (user) {
+        res.json({ status: "success", message: "User deleted successfully" });
+      } else {
+        res.json({ status: "error", message: "User not found" });
+      }
+    })
+    .catch(err => res.json({ status: "error", message: "An error occurred" }));
+});

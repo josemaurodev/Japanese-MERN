@@ -76,7 +76,7 @@ function Header(props) {
               </Link>
             </li>
             <li>
-              <Link to="/HiraganaHandakuten" className="dropdown-item">
+              <Link to="/KatakanaHandakuten" className="dropdown-item">
                 Handakuten
               </Link>
             </li>

@@ -1,3 +1,7 @@
+h2{
+  color: white;
+}
+
 .btn-primary {
   background-color: #007bff; /* Same blue color as in the Japanese Hiragana page */
   color: #fff; /* Text color */
@@ -65,7 +69,7 @@
   align-items: center;
 }
 
-/* New Styles for the User Button */
+
 .dropdown .dropdown-menu {
   background-color: #343a40;
   color: white;
@@ -77,6 +81,10 @@
 
 .dropdown .dropdown-item:hover {
   background-color: #23272b;
+}
+
+.login{
+  color: black;
 }
 
 .btn-dark {
@@ -95,18 +103,97 @@
 }
 
 
-/* Container for buttons to wrap on smaller screens */
 .button-container {
   display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
-  justify-content: center; /* Center the buttons */
-  gap: 4px; /* Spacing between buttons */
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 4px; 
 }
 
-/* Common button styles and spacing */
 .btn-custom {
-  flex: 1 0 150px; /* Allow buttons to grow and shrink */
-  max-width: 180px; /* Ensure max width */
-  padding: 10px 20px; /* Adjust padding for consistent button size */
+  flex: 1 0 150px; 
+  max-width: 180px; 
+  padding: 10px 20px; 
 }
 
+.yourAccount {
+  text-align: center;
+  padding: 20px; 
+}
+
+.YAForm {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  max-width: 80%; 
+  margin: 0 auto 1rem auto; 
+  padding: 0.5rem; 
+  border-radius: 15px; 
+  background: #f8f9fa; 
+}
+
+.ya-name {
+  padding: 0.8rem;
+  margin-left: 10px;
+  flex: 1; 
+}
+
+.button-ya {
+  max-width: 80%;
+  margin: 0 auto; 
+}
+
+.delete-button {
+  margin-top: 1rem;
+}
+
+.btn-yesDelete{
+  margin-right: 5px;
+}
+
+
+.schedule-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 1rem;
+}
+
+.task-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  word-break: break-word;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-text {
+  flex: 1; /* Allows the text to take up available space */
+  cursor: pointer;
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn {
+  margin: 0.5rem;
+}
