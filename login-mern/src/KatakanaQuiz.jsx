@@ -172,10 +172,6 @@ function KatakanaQuiz() {
           Next
         </button>
       </div>
-
-      <div className="mt-16 text-3xl text-blue-200 underline">
-        <Link to="/hiraganaQuiz">Go to Hiragana Quiz</Link>
-      </div>
     </div>
   );
 }

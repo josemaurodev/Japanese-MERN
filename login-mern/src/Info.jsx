@@ -5,16 +5,16 @@ import Header from "./Header";
 function Info() {
   return (
     <div className="min-vh-100 text-white text-center">
-      <Header></Header>
+      <Header />
 
       <div className="text-center">
-        <h1 className="display-4 font-weight-bold mb-4">
+        <h1 className="display-4 font-weight-bold">
           Welcome to the Hiragana Quiz App!
         </h1>
         <br />
         <p>
           This app is designed to help you learn and practice the Japanese
-          hiragana and Katakana characters.
+          hiragana and katakana characters.
         </p>
         <p>
           You can test your knowledge by taking quizzes and track your progress
@@ -37,6 +37,14 @@ function Info() {
           Get started by navigating to the "Learn Hiragana" section or take a
           quiz right away!
         </p>
+        <div className="d-flex justify-content-center mt-4">
+          <Link to="/custom-schedule" className="btn btn-primary mx-2">
+            Create Your Custom Schedule
+          </Link>
+          <Link to="/pre-made-schedule" className="btn btn-secondary mx-2">
+            Pre-made Course Schedule
+          </Link>
+        </div>
       </div>
     </div>
   );
