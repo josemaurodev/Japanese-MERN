@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 // Define the statistics schema
 const statisticsSchema = new mongoose.Schema({
@@ -15,8 +15,8 @@ const statisticsSchema = new mongoose.Schema({
 });
 
 const toDoItemSchema = new mongoose.Schema({
-  description: { type: String, required: true },
-  isDone: { type: Boolean, default: false }
+  text: { type: String, required: true },
+  completed: { type: Boolean, default: false },
 });
 
 const UserNameSchema = new mongoose.Schema({
@@ -24,13 +24,9 @@ const UserNameSchema = new mongoose.Schema({
   email: String,
   password: String,
   statistics: statisticsSchema,
-  toDoList: [toDoItemSchema]
-})
+  toDoList: [toDoItemSchema],
+});
 
-
-
-
-
-
-const UserModel = mongoose.model("usernames", UserNameSchema)
-module.exports = UserModel
+// Create and export the model
+const UserModel = mongoose.model("User", UserNameSchema);
+module.exports = UserModel;

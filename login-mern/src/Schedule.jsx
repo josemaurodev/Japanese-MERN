@@ -1,43 +1,11 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import "./style.css";
-
-const preDefinedTasks = [
-  { text: "Day 1 - Learn Hiragana - Vowels", completed: false },
-  { text: "Day 2 - Review Hiragana - Vowels", completed: false },
-  { text: "Day 3 - Learn Hiragana - Dakuten", completed: false },
-  { text: "Day 4 - Learn Hiragana - Dakuten", completed: false },
-  { text: "Day 5 - Review Hiragana - Vowels and Dakuten", completed: false },
-  { text: "Day 6 - Learn Hiragana - Handakuten", completed: false },
-  { text: "Day 7 - Learn Hiragana - Handakuten", completed: false },
-  { text: "Day 8 - Review Hiragana - Vowels, Dakuten and Handakuten", completed: false },
-  { text: "Day 9 - Review Hiragana - Vowels, Dakuten and Handakuten", completed: false },
-  { text: "Day 10 - Learn Hiragana - Complete Hiragana", completed: false },
-  { text: "Day 11 - Learn Hiragana - Complete Hiragana", completed: false },
-  { text: "Day 12 - Review Hiragana - Complete Hiragana", completed: false },
-  { text: "Day 13 - Quiz Hiragana - Complete Hiragana", completed: false },
-  { text: "Day 14 - Learn Katakana - Vowels", completed: false },
-  { text: "Day 15 - Review Katakana - Vowels", completed: false },
-  { text: "Day 16 - Review Hiragana (Quiz) - Complete Hiragana", completed: false },
-  { text: "Day 16 - Learn Katakana - Dakuten", completed: false },
-  { text: "Day 17 - Learn Katakana - Dakuten", completed: false },
-  { text: "Day 18 - Review Katakana - Vowels and Dakuten", completed: false },
-  { text: "Day 19 - Review Hiragana (Quiz) - Complete Hiragana", completed: false },
-  { text: "Day 20 - Learn Katakana - Handakuten", completed: false },
-  { text: "Day 21 - Learn Katakana - Handakuten", completed: false },
-  { text: "Day 22 - Review Katakana - Vowels, Dakuten and Handakuten", completed: false },
-  { text: "Day 23 - Review Katakana - Vowels, Dakuten and Handakuten", completed: false },
-  { text: "Day 24 - Review Hiragana (Quiz) - Complete Hiragana", completed: false },
-  { text: "Day 25 - Learn Katakana - Complete Katakana", completed: false },
-  { text: "Day 26 - Learn Katakana - Complete Katakana", completed: false },
-  { text: "Day 27 - Review Katakana - Complete Katakana", completed: false },
-  { text: "Day 28 - Quiz Katakana - Complete Katakana", completed: false },
-  { text: "Day 29 - Review Hiragana (Quiz) - Complete Hiragana", completed: false },
-  { text: "Day 30 - Review Katakana (Quiz) - Complete Katakana", completed: false }
-];
+import axios from "axios";
 
 function Schedule() {
-  const [tasks, setTasks] = useState(preDefinedTasks);
+  //const [email, setEmail] = useState("");
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [isEditing, setIsEditing] = useState(null);
   const [editTaskText, setEditTaskText] = useState("");
@@ -52,7 +20,9 @@ function Schedule() {
 
   const handleAddTask = () => {
     if (newTask.trim()) {
-      setTasks([...tasks, { text: newTask, completed: false }]);
+      const updatedTasks = [...tasks, { text: newTask, completed: false }];
+      setTasks(updatedTasks);
+      runUpdateSchedule(updatedTasks);
       setNewTask("");
     }
   };
@@ -62,11 +32,13 @@ function Schedule() {
       i === index ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
+    runUpdateSchedule(updatedTasks);
   };
 
   const handleDeleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
+    runDeleteTask(updatedTasks[index]);
   };
 
   const handleEditTask = (index) => {
@@ -79,6 +51,7 @@ function Schedule() {
       i === index ? { ...task, text: editTaskText } : task
     );
     setTasks(updatedTasks);
+    runUpdateSchedule(updatedTasks);
     setIsEditing(null);
     setEditTaskText("");
   };
@@ -86,6 +59,36 @@ function Schedule() {
   const handleCancelEditTask = () => {
     setIsEditing(null);
     setEditTaskText("");
+  };
+
+  useEffect(() => {
+    const id = localStorage.getItem("userID");
+    axios
+      .get(`http://localhost:3001/schedule?userID=${id}`)
+      .then((result) => {
+        if (result.data.status === "success") {
+          setTasks(result.data.user);
+        } else {
+          setTasks(result.data.user);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const runUpdateSchedule = (tasks) => {
+    const id = localStorage.getItem("userID");
+    axios.patch(`http://localhost:3001/schedule?userID=${id}`, {
+      preDefinedTasks: tasks,
+    });
+  };
+
+  const runDeleteTask = (task) => {
+    const id = localStorage.getItem("userID");
+    axios.delete(
+      `http://localhost:3001/schedule?userID=${id}&taskID=${task._id}`
+    );
   };
 
   return (
@@ -101,13 +104,19 @@ function Schedule() {
             placeholder="Enter new task"
             className="form-control rounded-15"
           />
-          <button onClick={handleAddTask} className="btn btn-primary rounded-15 mt-2">
+          <button
+            onClick={handleAddTask}
+            className="btn btn-primary rounded-15 mt-2"
+          >
             Add Task
           </button>
         </div>
         <ul className="task-list list-unstyled mt-4">
           {tasks.map((task, index) => (
-            <li key={index} className={`task-item ${task.completed ? "completed" : ""}`}>
+            <li
+              key={index}
+              className={`task-item ${task.completed ? "completed" : ""}`}
+            >
               {isEditing === index ? (
                 <>
                   <input
@@ -133,7 +142,12 @@ function Schedule() {
                 </>
               ) : (
                 <>
-                  <span className="task-text" onClick={() => handleToggleTask(index)}>{task.text}</span>
+                  <span
+                    className="task-text"
+                    onClick={() => handleToggleTask(index)}
+                  >
+                    {task.text}
+                  </span>
                   <div className="task-buttons">
                     <button
                       onClick={() => handleDeleteTask(index)}
