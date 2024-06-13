@@ -64,13 +64,13 @@ function Info() {
           <Link to="/custom-schedule" className="btn btn-primary mx-2">
             Create Your Custom Schedule
           </Link>
-
-          <button
+          <Link
+            to="/pre-made-schedule"
             className="btn btn-secondary mx-2"
             onClick={() => setFixedSchedule()}
           >
-            Pre-made Course Schedule
-          </button>
+            Generate Pre-Made Schedule
+          </Link>
         </div>
       </div>
     </div>
