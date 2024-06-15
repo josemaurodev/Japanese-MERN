@@ -4,7 +4,6 @@ import "./style.css";
 import axios from "axios";
 
 function Schedule() {
-  //const [email, setEmail] = useState("");
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [isEditing, setIsEditing] = useState(null);
@@ -35,10 +34,22 @@ function Schedule() {
     runUpdateSchedule(updatedTasks);
   };
 
+  //verificar pq tem que atualizar a pagina, provavelmente tem a ver com o fato de estar salvando no localstorage
   const handleDeleteTask = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTasks(updatedTasks);
-    runDeleteTask(updatedTasks[index]);
+    const taskToDelete = tasks[index];
+    axios
+      .delete(`http://localhost:3001/schedule?userID=${localStorage.getItem("userID")}&taskID=${taskToDelete._id}`)
+      .then((response) => {
+        if (response.data.status === "success") {
+          const updatedTasks = tasks.filter((_, i) => i !== index);
+          setTasks(updatedTasks);
+        } else {
+          console.log("Failed to delete the task:", response.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log("An error occurred while deleting the task:", err);
+      });
   };
 
   const handleEditTask = (index) => {
@@ -82,13 +93,6 @@ function Schedule() {
     axios.patch(`http://localhost:3001/schedule?userID=${id}`, {
       preDefinedTasks: tasks,
     });
-  };
-
-  const runDeleteTask = (task) => {
-    const id = localStorage.getItem("userID");
-    axios.delete(
-      `http://localhost:3001/schedule?userID=${id}&taskID=${task._id}`
-    );
   };
 
   return (

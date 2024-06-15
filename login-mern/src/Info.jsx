@@ -7,6 +7,9 @@ function Info() {
   const setFixedSchedule = () => {
     const id = localStorage.getItem("userID");
     axios
+    //se o usuario clicar em predefinied schedule ele envia o 
+    //id do usuario e as tasks pre definidas 
+    //para o back
       .patch(`http://localhost:3001/schedule?userID=${id}`, {
         preDefinedTasks: tasks,
       })
