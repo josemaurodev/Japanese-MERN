@@ -41,7 +41,7 @@ function KatakanaDakuten() {
 
   return (
     <div className="h-100 bg-dark text-white text-center outline-none box-shadow-none">
-      <Header title="LEARN KATAKANA" />
+      <Header title="Learn Katakana Dakuten" />
       <div className="text-9xl font-bold mb-8">{katakana[current].katakana}</div>
       <div className="text-9xl font-bold mb-8">{katakana[current].romanji}</div>
       <div className="mb-16 mt-16">

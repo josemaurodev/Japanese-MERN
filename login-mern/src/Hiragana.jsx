@@ -101,7 +101,7 @@ function Hiragana() {
 
   return (
     <div className="h-100 bg-dark text-white text-center outline-none box-shadow-none">
-      <Header title="LEARN COMPLETE HIRAGANA" />
+      <Header title="Learn the Complete Hiragana" />
       <div className="text-9xl font-bold mb-8">{hiragana[current].hiragana}</div>
       <div className="text-9xl font-bold mb-8">{hiragana[current].romanji}</div>
       <div className="mb-16 mt-16">

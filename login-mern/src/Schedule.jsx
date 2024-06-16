@@ -35,13 +35,16 @@ function Schedule() {
   };
 
   //verificar pq tem que atualizar a pagina, provavelmente tem a ver com o fato de estar salvando no localstorage
+  //envia para o backend o usuario e o id da task a ser excluida
   const handleDeleteTask = (index) => {
     const taskToDelete = tasks[index];
     axios
       .delete(`http://localhost:3001/schedule?userID=${localStorage.getItem("userID")}&taskID=${taskToDelete._id}`)
+      //se o responde ser positivo ele da um update nas tasks do que estao sendo mostradas
       .then((response) => {
         if (response.data.status === "success") {
           const updatedTasks = tasks.filter((_, i) => i !== index);
+          //atualiza as tasks com a nova informacao que chegou do banco
           setTasks(updatedTasks);
         } else {
           console.log("Failed to delete the task:", response.data.message);
