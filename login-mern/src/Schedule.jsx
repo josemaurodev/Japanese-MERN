@@ -5,6 +5,7 @@ import axios from "axios";
 
 function Schedule() {
   const [tasks, setTasks] = useState([]);
+  //useState é o que fica ouvindo se a variavel mudou
   const [newTask, setNewTask] = useState("");
   const [isEditing, setIsEditing] = useState(null);
   const [editTaskText, setEditTaskText] = useState("");
@@ -35,6 +36,7 @@ function Schedule() {
   };
 
   //verificar pq tem que atualizar a pagina, provavelmente tem a ver com o fato de estar salvando no localstorage
+  //realmente é isso, mas pra mudar teria que mudar bastante código
   //envia para o backend o usuario e o id da task a ser excluida
   const handleDeleteTask = (index) => {
     const taskToDelete = tasks[index];
@@ -119,6 +121,8 @@ function Schedule() {
           </button>
         </div>
         <ul className="task-list list-unstyled mt-4">
+          {/* Map é tipo um for, só que retorna alguma coisa. Se colocar o forEach ele não vai */}
+          {/* mostrar nada, pois o forEach não retorna */}
           {tasks.map((task, index) => (
             <li
               key={index}

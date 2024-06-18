@@ -138,6 +138,7 @@ app.delete("/user", (req, res) => {
     );
 });
 
+
 //quando o usuario quiser uma schedule pre definida
 app.patch("/schedule", async (req, res) => {
   const { userID } = req.query;
@@ -181,4 +182,26 @@ app.delete("/schedule", async (req, res) => {
   user.toDoList = user.toDoList.filter((task) => task._id.toString() !== taskID);
   await user.save();//salva o usuario
   return res.json({ status: "success", message: "Task deleted successfully" });//retorna sucesso
+});
+
+//criar um get para retornar a nota
+//aqui vai um exemplo
+app.get("/grade", (req, res) => {
+  const { userID } = req.query;
+  UserModel.findById({ _id: userID })
+    .then((user) => {
+      if (user) {
+        const gradeHiragana = user.statistics.countingTriesHiragana/user.statistics.countingCorrectsHiragana;
+        const gradeKatakana = user.statistics.countingTriesKatakana/user.statistics.countingCorrectsKatakana;
+        res.json({ status: "success", gradeKatakana, gradeHiragana });
+      //res.json({ status: "success", grade:grade });
+      //é igual a
+      //res.json({ status: "success", grade });
+      } else {
+        res.json({ status: "error", message: "",  gradeKatakana:0, gradeHiragana:0 });
+      }
+    })
+    .catch((err) =>
+      res.json({ status: "error", message: "An error occurred", gradeKatakana:0, gradeHiragana:0 })
+    );
 });

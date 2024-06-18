@@ -14,15 +14,9 @@ function Info() {
         preDefinedTasks: tasks,
       })
       .then(() => {
-        //if (result.data.status === "success") {
-        //setUser({ ...result.data.user, password: "", confirmPassword: "" });
-        //} else {
-        //setErrorMessage(result.data.message);
-        //}
       })
       .catch((err) => {
         console.log(err);
-        //setErrorMessage("An error occurred. Please try again.");
       });
   };
 
@@ -60,16 +54,20 @@ function Info() {
         </div>
         <br />
         <p>
-          Get started by navigating to the "Learn Hiragana" section or take a
+          Get started by navigating to the *Learn Hiragana* section or take a
           quiz right away!
         </p>
         <div className="d-flex justify-content-center mt-4">
-          <Link to="/custom-schedule" className="btn btn-primary mx-2">
+          <Link to="/schedule" 
+          className="btn btn-primary mx-2"
+          >
             Create Your Custom Schedule
           </Link>
           <Link
-            to="/pre-made-schedule"
+          //navega pra pre-made-schedule
+            to="/schedule"
             className="btn btn-secondary mx-2"
+            //ao clicar, depois de navegar, vai inserir na pagina pre-made-schedule o que voltar do back
             onClick={() => setFixedSchedule()}
           >
             Generate Pre-Made Schedule

@@ -100,6 +100,12 @@ function Header(props) {
         >
           Info
         </Link>
+        <Link
+          to="/schedule"
+          className="btn btn-dark btn-custom text-decoration-none text-light"
+        >
+          Schedule
+        </Link>
 
         {/* Start Account Button */}
         <div className="dropdown" aria-labelledby="userDropdown">
