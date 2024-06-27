@@ -52,7 +52,7 @@ function KatakanaQuiz() {
   };
 
   // const handleNextClick = () => {
-  //   setRandomKatakana();
+  //   setRandomKatakana(); aaaaa
   //   setError("");
   // };
 
