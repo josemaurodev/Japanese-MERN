@@ -123,6 +123,11 @@ function Header(props) {
               </Link>
             </li>
             <li>
+              <Link to="/Grades" className="dropdown-item">
+                Grades
+              </Link>
+            </li>
+            <li>
               <Link to="/login" className="dropdown-item" onClick={handleLogout}>
                 Logout
               </Link>

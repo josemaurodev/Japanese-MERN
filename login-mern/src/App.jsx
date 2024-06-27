@@ -19,6 +19,7 @@ import KatakanaHandakuten from "./KatakanaHandakuten";
 import KatakanaDakuten from "./KatakanaDakuten";
 import YourAccount from "./YourAccount";
 import Schedule from "./Schedule";
+import Grades from "./Grades";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/KatakanaDakuten" element={<KatakanaDakuten />}></Route>
         <Route path="/YourAccount" element={<YourAccount />}></Route>
         <Route path="/Schedule" element={<Schedule />}></Route>
+        <Route path="/Grades" element={<Grades />}></Route>
       </Routes>
     </BrowserRouter>
   );
