@@ -25,7 +25,7 @@ function Login() {
       .then((result) => {
         console.log(result);
         if (result.data.status === "success") {
-          //save user name
+          //save user name and id 
           localStorage.setItem('userName', result.data.user.name);
           localStorage.setItem('userID', result.data.user.id);
           //navigate to /info
