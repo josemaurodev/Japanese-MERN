@@ -1,6 +1,4 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { PersonFill } from 'react-bootstrap-icons';
 import { useNavigate } from "react-router-dom";
 
 function Header(props) {
