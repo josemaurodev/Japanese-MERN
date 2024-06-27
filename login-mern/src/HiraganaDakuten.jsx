@@ -1,30 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import Header from "./Header";
+import hiragana from "./assets/hiragana/dakuten.json"
 
 function HiraganaDakuten() {
-  const hiragana = [
-    { romanji: "ga", hiragana: "が" },
-    { romanji: "gi", hiragana: "ぎ" },
-    { romanji: "gu", hiragana: "ぐ" },
-    { romanji: "ge", hiragana: "げ" },
-    { romanji: "go", hiragana: "ご" },
-    { romanji: "za", hiragana: "ざ" },
-    { romanji: "ji", hiragana: "じ" },
-    { romanji: "zu", hiragana: "ず" },
-    { romanji: "ze", hiragana: "ぜ" },
-    { romanji: "zo", hiragana: "ぞ" },
-    { romanji: "da", hiragana: "だ" },
-    { romanji: "ji", hiragana: "ぢ" },
-    { romanji: "zu", hiragana: "づ" },
-    { romanji: "de", hiragana: "で" },
-    { romanji: "do", hiragana: "ど" },
-    { romanji: "ba", hiragana: "ば" },
-    { romanji: "bi", hiragana: "び" },
-    { romanji: "bu", hiragana: "ぶ" },
-    { romanji: "be", hiragana: "べ" },
-  ];
 
   const [current, setCurrent] = useState(0);
 

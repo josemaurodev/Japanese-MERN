@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import Header from "./Header";
+import hiragana from "./assets/hiragana/vowels.json"
 
 function HiraganaVowels() {
-  const hiragana = [
-    { romanji: "a", hiragana: "あ" },
-    { romanji: "i", hiragana: "い" },
-    { romanji: "u", hiragana: "う" },
-    { romanji: "e", hiragana: "え" },
-    { romanji: "o", hiragana: "お" },
-  ];
 
   const [current, setCurrent] = useState(0);
 

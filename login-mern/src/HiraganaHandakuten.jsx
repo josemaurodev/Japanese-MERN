@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import Header from "./Header";
+import hiragana from "./assets/hiragana/handakuten.json"
 
 function HiraganaHandakuten() {
-  const hiragana = [
-    { romanji: "pa", hiragana: "ぱ" },
-    { romanji: "pi", hiragana: "ぴ" },
-    { romanji: "pu", hiragana: "ぷ" },
-    { romanji: "pe", hiragana: "ぺ" },
-    { romanji: "po", hiragana: "ぽ" },
-  ];
 
   const [current, setCurrent] = useState(0);
 

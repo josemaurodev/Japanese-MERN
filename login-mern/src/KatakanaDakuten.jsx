@@ -1,32 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import Header from "./Header";
+import katakana from "./assets/katakana/dakuten.json"
 
 function KatakanaDakuten() {
-  const katakana = [
-    { romanji: "ga", katakana: "ガ" },
-    { romanji: "gi", katakana: "ギ" },
-    { romanji: "gu", katakana: "グ" },
-    { romanji: "ge", katakana: "ゲ" },
-    { romanji: "go", katakana: "ゴ" },
-    { romanji: "za", katakana: "ザ" },
-    { romanji: "ji", katakana: "ジ" },
-    { romanji: "zu", katakana: "ズ" },
-    { romanji: "ze", katakana: "ゼ" },
-    { romanji: "zo", katakana: "ゾ" },
-    { romanji: "da", katakana: "ダ" },
-    { romanji: "ji", katakana: "ヂ" },
-    { romanji: "zu", katakana: "ヅ" },
-    { romanji: "de", katakana: "デ" },
-    { romanji: "do", katakana: "ド" },
-    { romanji: "ba", katakana: "バ" },
-    { romanji: "bi", katakana: "ビ" },
-    { romanji: "bu", katakana: "ブ" },
-    { romanji: "be", katakana: "ベ" },
-    { romanji: "bo", katakana: "ボ" },
-  ];
-
   const [current, setCurrent] = useState(0);
 
   const handleNextClick = () => {

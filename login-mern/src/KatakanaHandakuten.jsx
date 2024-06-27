@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import Header from "./Header";
+import katakana from "./assets/katakana/handakuten.json"
 
 function KatakanaHandakuten() {
-  const katakana = [
-    { romanji: "pa", katakana: "パ" },
-    { romanji: "pi", katakana: "ピ" },
-    { romanji: "pu", katakana: "プ" },
-    { romanji: "pe", katakana: "ペ" },
-    { romanji: "po", katakana: "ポ" },
-  ];
 
   const [current, setCurrent] = useState(0);
 

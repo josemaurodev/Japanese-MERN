@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import Header from "./Header";
+import katakana from "./assets/katakana/vowels.json"
 
 function KatakanaVowels() {
-  const katakana = [
-    { romanji: "a", katakana: "ア" },
-    { romanji: "i", katakana: "イ" },
-    { romanji: "u", katakana: "ウ" },
-    { romanji: "e", katakana: "エ" },
-    { romanji: "o", katakana: "オ" },
-  ];
 
   const [current, setCurrent] = useState(0);
 
