@@ -1,3 +1,6 @@
+//file to past something that i needed to make it easy for me to reuse the code
+
+
 app.get("/user", (req, res) => {
   const { userID } = req.query;
   UserModel.findById({ _id: userID })
