@@ -22,7 +22,7 @@ const UserNameSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  statistics: statisticsSchema,
+  statistics: { type: statisticsSchema, default: () => ({}) },
   toDoList: { type: [toDoItemSchema], default: [] }, 
 });
 

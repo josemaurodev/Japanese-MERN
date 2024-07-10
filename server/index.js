@@ -81,6 +81,8 @@ app.get("/schedule", (req, res) => {
     .then((user) => {
       if (user) {
         res.json({ status: "success", user: user.toDoList });
+        //essa aqui retornava só o primeiro todolist do usuario, o day 1 com todo o objeto
+        //res.json({ status: "success", user: user.toDoList[0] });
       } else {
         res.json({ status: "error", message: "", user: [] });
       }
@@ -186,22 +188,86 @@ app.delete("/schedule", async (req, res) => {
 
 //criar um get para retornar a nota
 //aqui vai um exemplo
-app.get("/grade", (req, res) => {
+app.get('/grade', async (req, res) => {
   const { userID } = req.query;
-  UserModel.findById({ _id: userID })
+  UserModel.findById({_id: userID})
     .then((user) => {
-      if (user) {
-        const gradeHiragana = user.statistics.countingTriesHiragana/user.statistics.countingCorrectsHiragana;
-        const gradeKatakana = user.statistics.countingTriesKatakana/user.statistics.countingCorrectsKatakana;
-        res.json({ status: "success", gradeKatakana, gradeHiragana });
-      //res.json({ status: "success", grade:grade });
-      //é igual a
-      //res.json({ status: "success", grade });
+      if (user){
+        res.json({
+          status: 'success',
+          statistics: user.statistics
+        });
       } else {
-        res.json({ status: "error", message: "",  gradeKatakana:0, gradeHiragana:0 });
+      res.json({ status: "error", message: "User not found" });
       }
     })
-    .catch((err) =>
-      res.json({ status: "error", message: "An error occurred", gradeKatakana:0, gradeHiragana:0 })
-    );
+  .catch((err) =>
+    res.json({ status: "error", message: "An error occurred" })
+  );
+});
+
+app.patch('/gradeKatakana', async (req, res) => {
+  const { userID } = req.query;
+  //ele ta atualizando certinho
+  //console.log("Received userID:", userID);
+  //console.log("Received body:", req.body);
+  const {
+    currentStreakKatakana,
+    maxStreakKatakana,
+    countingTriesKatakana,
+    countingCorrectsKatakana,
+  } = req.body;
+
+  try {
+    const user = await UserModel.findById(userID);
+    if (!user) {
+      return res.json({ status: 'error', message: 'User not found' });
+    }
+
+    const statistics = user.statistics;
+    statistics.currentStreakKatakana = currentStreakKatakana;
+    statistics.maxStreakKatakana = maxStreakKatakana;
+    statistics.countingTriesKatakana = countingTriesKatakana;
+    statistics.countingCorrectsKatakana = countingCorrectsKatakana;
+
+    await user.save();
+
+    res.json({ status: 'success', message: 'Statistics updated successfully' });
+  } catch (error) {
+    console.error('Error updating statistics:', error);
+    res.json({ status: 'error', message: 'An error occurred' });
+  }
+});
+
+app.patch('/gradeHiragana', async (req, res) => {
+  const { userID } = req.query;
+  //ele ta atualizando certinho
+  //console.log("Received userID:", userID);
+  //console.log("Received body:", req.body);
+  const {
+    currentStreakHiragana,
+    maxStreakHiragana,
+    countingTriesHiragana,
+    countingCorrectsHiragana,
+  } = req.body;
+
+  try {
+    const user = await UserModel.findById(userID);
+    if (!user) {
+      return res.json({ status: 'error', message: 'User not found' });
+    }
+
+    const statistics = user.statistics;
+    statistics.currentStreakHiragana = currentStreakHiragana;
+    statistics.maxStreakHiragana = maxStreakHiragana;
+    statistics.countingTriesHiragana = countingTriesHiragana;
+    statistics.countingCorrectsHiragana = countingCorrectsHiragana;
+
+    await user.save();
+
+    res.json({ status: 'success', message: 'Statistics updated successfully' });
+  } catch (error) {
+    console.error('Error updating statistics:', error);
+    res.json({ status: 'error', message: 'An error occurred' });
+  }
 });
