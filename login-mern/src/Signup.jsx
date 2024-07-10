@@ -7,14 +7,22 @@ function Signup() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const navigate = useNavigate()
+  const [message, setMessage] = useState(""); 
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/register", { name, email, password })
-      .then(result => {console.log(result)
-      navigate('/login')
+      .then(result => {console.log(result);
+        if(result.data.status === "success"){
+          setMessage("Register went all good! Redirecting to login");
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
+        } else {
+          setMessage("Registration failed. Please try again.");
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -23,6 +31,7 @@ function Signup() {
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-25">
         <h2>Register</h2>
+        {message && <div className="alert alert-info">{message}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">
