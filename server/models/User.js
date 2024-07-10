@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const statisticsSchema = new mongoose.Schema({
-  currentStreakHiraga: { type: Number, default: 0 },
+  currentStreakHiragana: { type: Number, default: 0 },
   maxStreakHiragana: { type: Number, default: 0 },
   countingTriesHiragana: { type: Number, default: 0 },
   countingCorrectsHiragana: { type: Number, default: 0 },
