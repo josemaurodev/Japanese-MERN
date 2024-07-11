@@ -97,10 +97,10 @@ function KatakanaQuiz() {
       <Header title="KATAKANA QUIZ"></Header>
       <div>
         <p className="text-4xl mb-1">
-          Current Streak / Max Streak / Tries / Corrects
+          Current Streak / Max Streak 
         </p>
         <p className="text-4xl mb-1">
-          {streak} / {maxStreak} / {tries} / {corrects}
+          {streak} / {maxStreak} 
         </p>
       </div>
       <div className="katakana-display">{katakana[current].katakana}</div>

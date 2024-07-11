@@ -30,7 +30,7 @@ function Signup() {
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-25">
-        <h2>Register</h2>
+        <h2 className="Signup">Register</h2>
         {message && <div className="alert alert-info">{message}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
