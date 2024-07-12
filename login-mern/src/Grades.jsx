@@ -87,7 +87,7 @@ function Grades() {
       <div className="mt-10">
         <p className="text-4xl mb-5">Your Performance</p>
         <div className="statistics">
-          <p className="text-2xl mb-3">Hiragana Quiz</p>
+          <p className="text-2xl mb-3">Hiragana Quiz  <br />Correct/Tries</p>
           <p className="text-2xl mb-5">
             Correct Answers: {hiraganaStats.corrects}/{hiraganaStats.tries}
             <br />
@@ -99,9 +99,9 @@ function Grades() {
           >
             Reset Hiragana
           </button>
-          <p className="text-2xl mb-3"><br />Katakana Quiz</p>
+          <p className="text-2xl mb-3"><br />Katakana Quiz <br />Correct/Tries</p>
           <p className="text-2xl mb-5">
-            Correct Answers: {katakanaStats.corrects}/{katakanaStats.tries}
+            Correct Answers: {katakanaStats.corrects}/{katakanaStats.tries} 
             <br />
             Correct Percentage: {katakanaPercentage}%
           </p>
